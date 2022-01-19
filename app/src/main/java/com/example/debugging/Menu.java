@@ -8,8 +8,10 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.text.Editable;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -43,8 +45,9 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
         buttonNext = findViewById(R.id.buttonNext);
         textViewName = findViewById(R.id.textViewName);
 
+
         SharedPreferences sharedPreferences = getSharedPreferences("Adatok", Context.MODE_PRIVATE);
-        seged = sharedPreferences.getString("Nev","Nincs elmentve a neved!");
+        seged = sharedPreferences.getString("nev", "Nincs elmentve a neved");
         textViewName.setText(seged);
 
 
@@ -86,6 +89,7 @@ public class Menu extends AppCompatActivity implements View.OnClickListener{
                 Toast.makeText(this, "A neved:" + seged, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.buttonExit:
+                alertDialog.show();
                 break;
             case R.id.buttonNext:
                 Intent next = new Intent(Menu.this,ThirdActivity.class);
